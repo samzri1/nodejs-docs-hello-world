@@ -41,7 +41,7 @@ const db = {
   
   };
   
-// Create the Express app & setup middlewares
+// Create the Express app & setup middddlewares
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
