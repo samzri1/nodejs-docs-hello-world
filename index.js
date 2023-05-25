@@ -48,7 +48,7 @@ app.use(bodyParser.json());
 app.use(cors({ origin: /http:\/\/(127(\.\d){3}|localhost)/}));
 app.options('*', cors());
 
-// ***************************************************************************
+// *******************************************************************************
 
 // Configure routes
 const router = express.Router();
