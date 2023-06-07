@@ -4,7 +4,7 @@ pipeline {
     stages{
         stage('Build npm'){
             steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/samzri1/nodejs-docs-hello-world/tree/main']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/samzri1/nodejs-docs-hello-world/']]])
                 sh 'npm install'
             }
         }
