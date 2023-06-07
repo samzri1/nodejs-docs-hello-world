@@ -8,13 +8,7 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Build docker image'){
-            steps{
-                script{
-                    sh 'docker build -t samzri/devops-integration2 .'
-                }
-            }
-        }
+       
         stage('Push image to Hub'){
             steps{
                 script{
