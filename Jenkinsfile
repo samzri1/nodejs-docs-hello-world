@@ -1,19 +1,19 @@
 pipeline {
     agent any
     tools{
-        maven 'mvn'
+        node 'NodeJS'
     }
     stages{
-        stage('Build Maven'){
+        stage('Build npm'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/samzri1/devops-automation-main']]])
-                sh 'mvn clean install'
+                sh 'npm install'
             }
         }
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t samzri/devops-integration .'
+                    sh 'docker build -t samzri/devops-integration2 .'
                 }
             }
         }
@@ -22,7 +22,7 @@ pipeline {
                 script{
                    withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
                    sh 'docker login -u samzri -p dckr_pat_kRC0j5zg0C3mJhxQCeigH2xg0BA'}
-                   sh 'docker push samzri/devops-integration'
+                   sh 'docker push samzri/devops-integration2'
                 }
             }
         }
