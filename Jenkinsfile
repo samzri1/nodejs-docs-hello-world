@@ -5,7 +5,7 @@ pipeline {
         stage('Build npm'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/samzri1/nodejs-docs-hello-world/']]])
-                sh ' CMD npm run start'
+                sh ' npm run start'
             }
         }
         stage('Build docker image'){
