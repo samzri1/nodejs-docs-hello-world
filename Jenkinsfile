@@ -5,7 +5,14 @@ pipeline {
         stage('Build npm'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/samzri1/nodejs-docs-hello-world/']]])
-                sh 'npm install'
+                
+            }
+        }
+        stage('Build docker image'){
+            steps{
+                script{
+                    sh 'docker build -t samzri/devops-integration2 .'
+                }
             }
         }
        
